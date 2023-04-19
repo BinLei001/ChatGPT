@@ -466,24 +466,7 @@ Error code: {result.returncode}""")
     return result.stdout.decode(encoding="utf8", errors="ignore")
 
 def versions_html():
-    git = os.environ.get('GIT', "git")
-    python_version = ".".join([str(x) for x in sys.version_info[0:3]])
-    try:
-        commit_hash = run(f"{git} rev-parse HEAD").strip()
-    except Exception:
-        commit_hash = "<none>"
-    if commit_hash != "<none>":
-        short_commit = commit_hash[0:7]
-        commit_info = f"<a style=\"text-decoration:none\" href=\"https://github.com/GaiZhenbiao/ChuanhuChatGPT/commit/{short_commit}\">{short_commit}</a>"
-    else:
-        commit_info = "unknown \U0001F615"
-    return f"""
-        Python: <span title="{sys.version}">{python_version}</span>
-         • 
-        Gradio: {gr.__version__}
-         • 
-        Commit: {commit_info}
-        """
+    return "V1.0.0"
 
 def add_source_numbers(lst, source_name = "Source", use_source = True):
     if use_source:
